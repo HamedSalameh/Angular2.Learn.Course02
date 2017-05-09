@@ -15,7 +15,7 @@ var EventsAppComponent = (function () {
     EventsAppComponent = __decorate([
         core_1.Component({
             selector: 'events-app',
-            template: '<h2>Hello World</h2>'
+            template: '<events-list></events-list>'
         }), 
         __metadata('design:paramtypes', [])
     ], EventsAppComponent);
