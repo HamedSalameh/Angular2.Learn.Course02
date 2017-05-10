@@ -11,15 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var EventThumbnailComponent = (function () {
     function EventThumbnailComponent() {
+        this.eventClick = new core_1.EventEmitter();
     }
+    EventThumbnailComponent.prototype.handleClickMe = function () {
+        this.eventClick.emit(this.event.name);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
     ], EventThumbnailComponent.prototype, "event", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventThumbnailComponent.prototype, "eventClick", void 0);
     EventThumbnailComponent = __decorate([
         core_1.Component({
             selector: 'event-thumbnail',
-            template: "\n    <div>\n        <div class=\"well hoverwell thumbnail\">\n            <h2>{{event.name}}</h2>\n            <div>Date: {{event.date}}</div>\n            <div>Time: {{event.time}}</div>\n            <div>Price: ${{event.price}}</div>\n            <div>\n                <span>Location: {{event.location.address}}</span>\n                <span>&nbsp;</span>\n                <span>{{event.location.city}}, {{event.location.country}}</span>\n            </div>\n        </div>\n    </div>\n    "
+            template: "\n    <div>\n        <div class=\"well hoverwell thumbnail\">\n            <h2>{{event.name}}</h2>\n            <div>Date: {{event.date}}</div>\n            <div>Time: {{event.time}}</div>\n            <div>Price: ${{event.price}}</div>\n            <div>\n                <span>Location: {{event.location.address}}</span>\n                <span>&nbsp;</span>\n                <span>{{event.location.city}}, {{event.location.country}}</span>\n            </div>\n            <button class=\"btn btn-primary\" (click)=\"handleClickMe()\">Click</button>\n        </div>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], EventThumbnailComponent);
