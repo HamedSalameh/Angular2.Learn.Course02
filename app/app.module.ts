@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { EventsAppComponent} from './events-app.component';
 import { EventsListComponent} from './events/events-list.component';
-import { EventThumbnailComponent } from './events/evemt-thunmbnail.component';
+import { EventThumbnailComponent } from './events/event-thunmbnail.component';
 import { NavBarComponent} from './nav/navbar.component';
 
 @NgModule({

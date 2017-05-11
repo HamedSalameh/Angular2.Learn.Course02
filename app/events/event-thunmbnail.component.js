@@ -13,6 +13,9 @@ var EventThumbnailComponent = (function () {
     function EventThumbnailComponent() {
     }
     EventThumbnailComponent.prototype.getStartTimeClass = function () {
+        if (this.event && this.event.time === '8:00 am')
+            return ['green', 'bold'];
+        return [];
     };
     __decorate([
         core_1.Input(), 
@@ -31,4 +34,4 @@ var EventThumbnailComponent = (function () {
     return EventThumbnailComponent;
 }());
 exports.EventThumbnailComponent = EventThumbnailComponent;
-//# sourceMappingURL=evemt-thunmbnail.component.js.map
+//# sourceMappingURL=event-thunmbnail.component.js.map
