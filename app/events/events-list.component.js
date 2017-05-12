@@ -10,19 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var event_service_1 = require('../events/shared/event.service');
+var toastr_service_1 = require('../common/toastr.service');
 var EventsListComponent = (function () {
-    function EventsListComponent(_EventService) {
+    function EventsListComponent(_EventService, _ToastrService) {
         this._EventService = _EventService;
+        this._ToastrService = _ToastrService;
     }
     EventsListComponent.prototype.ngOnInit = function () {
         this.events = this._EventService.getEvents();
     };
+    EventsListComponent.prototype.handleClick = function (event) {
+        this._ToastrService.success(event);
+    };
     EventsListComponent = __decorate([
         core_1.Component({
             selector: 'events-list',
-            template: "\n    <div>\n        <h1>Upcomming Angular 2 Events</h1>\n        <hr>\n        <div class=\"row\">\n            <event-thumbnail *ngFor=\"let event of events\" [event]=\"event\" class=\"col col-md-5\"></event-thumbnail>\n        </div>\n    </div>\n    "
+            template: "\n    <div>\n        <h1>Upcomming Angular 2 Events</h1>\n        <hr>\n        <div class=\"row\">\n            <event-thumbnail (click)=\"handleClick(event.name)\" *ngFor=\"let event of events\" [event]=\"event\" class=\"col col-md-5\"></event-thumbnail>\n        </div>\n    </div>\n    "
         }), 
-        __metadata('design:paramtypes', [event_service_1.EventService])
+        __metadata('design:paramtypes', [event_service_1.EventService, toastr_service_1.ToastrService])
     ], EventsListComponent);
     return EventsListComponent;
 }());

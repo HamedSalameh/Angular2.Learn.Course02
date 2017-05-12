@@ -15,6 +15,7 @@ var events_list_component_1 = require('./events/events-list.component');
 var event_thunmbnail_component_1 = require('./events/event-thunmbnail.component');
 var navbar_component_1 = require('./nav/navbar.component');
 var event_service_1 = require('./events/shared/event.service');
+var toastr_service_1 = require('./common/toastr.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,7 +24,7 @@ var AppModule = (function () {
             imports: [platform_browser_1.BrowserModule],
             exports: [],
             declarations: [events_app_component_1.EventsAppComponent, events_list_component_1.EventsListComponent, event_thunmbnail_component_1.EventThumbnailComponent, navbar_component_1.NavBarComponent],
-            providers: [event_service_1.EventService],
+            providers: [event_service_1.EventService, toastr_service_1.ToastrService],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
         __metadata('design:paramtypes', [])
