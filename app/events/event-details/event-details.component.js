@@ -9,21 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var event_service_1 = require('../shared/event.service');
 var EventDetailsComponent = (function () {
-    function EventDetailsComponent(_eventService) {
+    function EventDetailsComponent(_eventService, _route) {
         this._eventService = _eventService;
+        this._route = _route;
     }
     ;
     EventDetailsComponent.prototype.ngOnInit = function () {
-        this.event = this._eventService.getEvents(1);
+        this.event = this._eventService.getEvents(+this._route.snapshot.params['id']);
     };
     EventDetailsComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/events/event-details/event-details.component.html',
+            templateUrl: '/app/events/event-details/event-details.component.html',
             styles: ["\n        .container { padding-left: 20px; padding-right: 20px; },\n        .event-image { height: 100px; }\n        "]
         }), 
-        __metadata('design:paramtypes', [event_service_1.EventService])
+        __metadata('design:paramtypes', [event_service_1.EventService, router_1.ActivatedRoute])
     ], EventDetailsComponent);
     return EventDetailsComponent;
 }());
