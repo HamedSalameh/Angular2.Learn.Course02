@@ -3,7 +3,7 @@ import { EventService } from './shared/event.service';
 import { ToastrService} from '../common/toastr.service';
 
 @Component({
-    selector: 'events-list',
+
     template:
     `
     <div>
@@ -22,7 +22,7 @@ export class EventsListComponent implements OnInit {
     constructor(private _EventService :EventService, private _ToastrService : ToastrService ) {}
 
     ngOnInit() {
-      this.events = this._EventService.getEvents();
+      this.events = this._EventService.getEvents(0);
     }
 
     handleClick(event){

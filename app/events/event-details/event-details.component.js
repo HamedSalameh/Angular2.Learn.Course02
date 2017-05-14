@@ -9,17 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var event_service_1 = require('../shared/event.service');
 var EventDetailsComponent = (function () {
-    function EventDetailsComponent() {
+    function EventDetailsComponent(_eventService) {
+        this._eventService = _eventService;
     }
+    ;
     EventDetailsComponent.prototype.ngOnInit = function () {
+        this.event = this._eventService.getEvents(1);
     };
     EventDetailsComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/events/event-details.component.html',
+            templateUrl: 'app/events/event-details/event-details.component.html',
             styles: ["\n        .container { padding-left: 20px; padding-right: 20px; },\n        .event-image { height: 100px; }\n        "]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [event_service_1.EventService])
     ], EventDetailsComponent);
     return EventDetailsComponent;
 }());

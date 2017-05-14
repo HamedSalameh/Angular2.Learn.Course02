@@ -17,14 +17,13 @@ var EventsListComponent = (function () {
         this._ToastrService = _ToastrService;
     }
     EventsListComponent.prototype.ngOnInit = function () {
-        this.events = this._EventService.getEvents();
+        this.events = this._EventService.getEvents(0);
     };
     EventsListComponent.prototype.handleClick = function (event) {
         this._ToastrService.success(event);
     };
     EventsListComponent = __decorate([
         core_1.Component({
-            selector: 'events-list',
             template: "\n    <div>\n        <h1>Upcomming Angular 2 Events</h1>\n        <hr>\n        <div class=\"row\">\n            <event-thumbnail (click)=\"handleClick(event.name)\" *ngFor=\"let event of events\" [event]=\"event\" class=\"col col-md-5\"></event-thumbnail>\n        </div>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService, toastr_service_1.ToastrService])
