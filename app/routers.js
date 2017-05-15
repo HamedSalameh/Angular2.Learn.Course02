@@ -10,4 +10,4 @@ exports.appRoutes = [
     { path: '404', component: _404_component_1.Error404Component },
     { path: '', redirectTo: '/events', pathMatch: 'full' }
 ];
-//# sourceMappingURL=router.js.map
+//# sourceMappingURL=routers.js.map
