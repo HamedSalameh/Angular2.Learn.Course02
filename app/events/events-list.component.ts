@@ -22,7 +22,7 @@ export class EventsListComponent implements OnInit {
     constructor(private _EventService :EventService, private _ToastrService : ToastrService ) {}
 
     ngOnInit() {
-      this.events = this._EventService.getEvents(0);
+      this.events = this._EventService.getEvents();
     }
 
     handleClick(event){

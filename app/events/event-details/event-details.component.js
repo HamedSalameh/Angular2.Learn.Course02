@@ -18,7 +18,7 @@ var EventDetailsComponent = (function () {
     }
     ;
     EventDetailsComponent.prototype.ngOnInit = function () {
-        this.event = this._eventService.getEvents(+this._route.snapshot.params['id']);
+        this.event = this._eventService.getEvent(+this._route.snapshot.params['id']);
     };
     EventDetailsComponent = __decorate([
         core_1.Component({

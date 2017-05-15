@@ -12,13 +12,11 @@ var core_1 = require('@angular/core');
 var EventService = (function () {
     function EventService() {
     }
-    EventService.prototype.getEvents = function (id) {
-        if (id === 0) {
-            return EVENTS;
-        }
-        else {
-            return EVENTS.find(function (event) { return event.id === id; });
-        }
+    EventService.prototype.getEvents = function () {
+        return EVENTS;
+    };
+    EventService.prototype.getEvent = function (id) {
+        return EVENTS.find(function (event) { return event.id === id; });
     };
     EventService = __decorate([
         core_1.Injectable(), 

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/RX';
 
 @Injectable()
 export class EventService {
 
-    getEvents(id: number) : any{
-        if (id === 0) {
-            return EVENTS;
-        } else {
-            return EVENTS.find(event => event.id === id);
-        }
+    getEvents(){
+        return EVENTS;
+    }
+
+    getEvent(id: number) : any{
+        return EVENTS.find(event => event.id === id);
     }
 }
 
