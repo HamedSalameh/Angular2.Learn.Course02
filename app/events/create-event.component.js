@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 var CreateEventComponent = (function () {
     function CreateEventComponent(_router) {
         this._router = _router;
+        this.isDirty = true;
     }
     CreateEventComponent.prototype.cancel = function () {
         this._router.navigate(['/events']);

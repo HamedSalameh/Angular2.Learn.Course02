@@ -17,10 +17,32 @@ import { appRoutes } from './routes';
 @NgModule({
     imports: [ BrowserModule, RouterModule.forRoot(appRoutes) ],
     exports: [],
-    declarations: [ EventsAppComponent, EventsListComponent,  EventThumbnailComponent, NavBarComponent, EventDetailsComponent, CreateEventComponent, Error404Component],
-    providers: [ EventService, ToastrService, EventRouteActivator ],
+    declarations: [ 
+        EventsAppComponent, 
+        EventsListComponent,  
+        EventThumbnailComponent, 
+        NavBarComponent, 
+        EventDetailsComponent, 
+        CreateEventComponent, 
+        Error404Component],
+    providers: [ 
+        EventService, 
+        ToastrService, 
+        EventRouteActivator,
+        { 
+            provide: 'canDeactivateCreateEvent',
+            useValue: checkDirtyStart 
+        }
+        ],
     bootstrap: [ EventsAppComponent]
 })
 export class AppModule {
 
+}
+
+function checkDirtyStart(component: CreateEventComponent){
+    if (component.isDirty){
+        return window.confirm("You have not saved this event, do you really want to cancel?");
+    }
+    return true;
 }

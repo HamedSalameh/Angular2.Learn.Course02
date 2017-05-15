@@ -29,8 +29,23 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(routes_1.appRoutes)],
             exports: [],
-            declarations: [events_app_component_1.EventsAppComponent, events_list_component_1.EventsListComponent, event_thunmbnail_component_1.EventThumbnailComponent, navbar_component_1.NavBarComponent, event_details_component_1.EventDetailsComponent, create_event_component_1.CreateEventComponent, _404_component_1.Error404Component],
-            providers: [event_service_1.EventService, toastr_service_1.ToastrService, event_route_activator_component_1.EventRouteActivator],
+            declarations: [
+                events_app_component_1.EventsAppComponent,
+                events_list_component_1.EventsListComponent,
+                event_thunmbnail_component_1.EventThumbnailComponent,
+                navbar_component_1.NavBarComponent,
+                event_details_component_1.EventDetailsComponent,
+                create_event_component_1.CreateEventComponent,
+                _404_component_1.Error404Component],
+            providers: [
+                event_service_1.EventService,
+                toastr_service_1.ToastrService,
+                event_route_activator_component_1.EventRouteActivator,
+                {
+                    provide: 'canDeactivateCreateEvent',
+                    useValue: checkDirtyStart
+                }
+            ],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
         __metadata('design:paramtypes', [])
@@ -38,4 +53,10 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+function checkDirtyStart(component) {
+    if (component.isDirty) {
+        return window.confirm("You have not saved this event, do you really want to cancel?");
+    }
+    return true;
+}
 //# sourceMappingURL=app.module.js.map
