@@ -22,6 +22,7 @@ var event_service_1 = require('./events/shared/event.service');
 var event_details_component_1 = require('./events/event-details/event-details.component');
 var toastr_service_1 = require('./common/toastr.service');
 var routes_1 = require('./routes');
+var events_list_resolver_service_1 = require('./events/events-list.resolver.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +45,8 @@ var AppModule = (function () {
                 {
                     provide: 'canDeactivateCreateEvent',
                     useValue: checkDirtyStart
-                }
+                },
+                events_list_resolver_service_1.EventListResolver
             ],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
