@@ -8,7 +8,7 @@ import { EventService } from '../events/shared/event.service';
      constructor(private _eventService: EventService, private _router:Router){}
 
      canActivate(route: ActivatedRouteSnapshot) {
-         const eventExists = !!this._eventService.getEvents(+route.params['id']);
+         const eventExists = !!this._eventService.getEvent(+route.params['id']);
 
          if (!eventExists){
              this._router.navigate(['/404']);

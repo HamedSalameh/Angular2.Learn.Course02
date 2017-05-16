@@ -9,25 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
-var event_service_1 = require('../events/shared/event.service');
-var EventRouteActivator = (function () {
-    function EventRouteActivator(_eventService, _router) {
-        this._eventService = _eventService;
-        this._router = _router;
+var user_routes_1 = require('./user.routes');
+var profile_component_1 = require('./profile.component');
+var UserModule = (function () {
+    function UserModule() {
     }
-    EventRouteActivator.prototype.canActivate = function (route) {
-        var eventExists = !!this._eventService.getEvent(+route.params['id']);
-        if (!eventExists) {
-            this._router.navigate(['/404']);
-        }
-        return eventExists;
-    };
-    EventRouteActivator = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [event_service_1.EventService, router_1.Router])
-    ], EventRouteActivator);
-    return EventRouteActivator;
+    UserModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                common_1.CommonModule,
+                router_1.RouterModule.forChild(user_routes_1.userRoutes)
+            ],
+            exports: [],
+            declarations: [
+                profile_component_1.ProfileComponent
+            ],
+            providers: [],
+            bootstrap: []
+        }), 
+        __metadata('design:paramtypes', [])
+    ], UserModule);
+    return UserModule;
 }());
-exports.EventRouteActivator = EventRouteActivator;
-//# sourceMappingURL=event-route-activator.component.js.map
+exports.UserModule = UserModule;
+//# sourceMappingURL=user.module.js.map
