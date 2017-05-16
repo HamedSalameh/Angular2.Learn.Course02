@@ -9,17 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var auth_service_1 = require('./auth.service');
+var router_1 = require('@angular/router');
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(_authService, _router) {
+        this._authService = _authService;
+        this._router = _router;
     }
     LoginComponent.prototype.login = function (formValues) {
-        console.log(formValues);
+        this._authService.loginUser(formValues.userName, formValues.password);
+        this._router.navigate(['events']);
+    };
+    LoginComponent.prototype.cancel = function () {
+        this._router.navigate(['events']);
     };
     LoginComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/user/login.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

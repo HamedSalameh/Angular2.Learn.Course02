@@ -12,6 +12,7 @@ import {
     EventListResolver
 } from './events/index';
 
+import { AuthService} from './user/auth.service';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
@@ -37,7 +38,8 @@ import { appRoutes } from './routes';
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyStart
         },
-        EventListResolver
+        EventListResolver,
+        AuthService
     ],
     bootstrap: [EventsAppComponent]
 })
