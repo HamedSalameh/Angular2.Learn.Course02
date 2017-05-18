@@ -23,7 +23,8 @@ var UserModule = (function () {
             imports: [
                 common_1.CommonModule,
                 router_1.RouterModule.forChild(user_routes_1.userRoutes),
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule
             ],
             exports: [],
             declarations: [
