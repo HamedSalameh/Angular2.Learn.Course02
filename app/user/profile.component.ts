@@ -15,12 +15,13 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   private firstName: FormControl;
   private lastName: FormControl;
+  lastNameErrorMessage: string;
 
   constructor(private _auth: AuthService, private _router: Router){}
 
   ngOnInit(){
 
-    this.firstName = new FormControl(this._auth.currentUser.firstName, Validators.required);
+    this.firstName = new FormControl(this._auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
     this.lastName = new FormControl(this._auth.currentUser.lastName, Validators.required);
     this.profileForm = new FormGroup({
       firstName: this.firstName,

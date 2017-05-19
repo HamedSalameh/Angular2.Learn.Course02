@@ -18,7 +18,7 @@ var ProfileComponent = (function () {
         this._router = _router;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        this.firstName = new forms_1.FormControl(this._auth.currentUser.firstName, forms_1.Validators.required);
+        this.firstName = new forms_1.FormControl(this._auth.currentUser.firstName, [forms_1.Validators.required, forms_1.Validators.pattern('[a-zA-Z].*')]);
         this.lastName = new forms_1.FormControl(this._auth.currentUser.lastName, forms_1.Validators.required);
         this.profileForm = new forms_1.FormGroup({
             firstName: this.firstName,
