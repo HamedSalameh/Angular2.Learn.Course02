@@ -10,19 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var event_service_1 = require('./shared/event.service');
 var CreateEventComponent = (function () {
-    function CreateEventComponent(_router) {
+    function CreateEventComponent(_router, _eventService) {
         this._router = _router;
+        this._eventService = _eventService;
         this.isDirty = true;
     }
     CreateEventComponent.prototype.cancel = function () {
         this._router.navigate(['/events']);
     };
+    CreateEventComponent.prototype.saveEvent = function (formValues) {
+        this._eventService.saveEvent(formValues);
+        this.isDirty = false;
+        this._router.navigate(['/events']);
+    };
     CreateEventComponent = __decorate([
         core_1.Component({
-            template: "\n    <div class=\"col-md-6\">\n        <h3>Create Event form</h3>\n        <br/>\n        <br/>\n        <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n        <button type=\"button\" (click)=\"cancel()\" class=\"btn btn-default\">Cancel</button>\n    </div>\n    "
+            templateUrl: 'app/events/create-event.component.html',
+            styles: ["\n    em { float:right; color:#E05C65; padding-left: 10px;}\n    .error input { background-color: #E3C3C5; }    \n  "]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, event_service_1.EventService])
     ], CreateEventComponent);
     return CreateEventComponent;
 }());
