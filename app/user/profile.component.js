@@ -18,23 +18,32 @@ var ProfileComponent = (function () {
         this._router = _router;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        var firstName = new forms_1.FormControl(this._auth.currentUser.firstName);
-        var lastName = new forms_1.FormControl(this._auth.currentUser.lastName);
+        this.firstName = new forms_1.FormControl(this._auth.currentUser.firstName, forms_1.Validators.required);
+        this.lastName = new forms_1.FormControl(this._auth.currentUser.lastName, forms_1.Validators.required);
         this.profileForm = new forms_1.FormGroup({
-            firstName: firstName,
-            lastName: lastName
+            firstName: this.firstName,
+            lastName: this.lastName
         });
     };
     ProfileComponent.prototype.cancel = function () {
         this._router.navigate(['events']);
     };
+    ProfileComponent.prototype.validateLastName = function () {
+        return this.lastName.valid || this.lastName.untouched;
+    };
+    ProfileComponent.prototype.validateFirstName = function () {
+        return this.firstName.valid || this.firstName.untouched;
+    };
     ProfileComponent.prototype.saveProfile = function (formValue) {
-        this._auth.updateCurrentUser(formValue.firstName, formValue.lastName);
-        this._router.navigate(['events']);
+        if (this.profileForm.valid) {
+            this._auth.updateCurrentUser(formValue.firstName, formValue.lastName);
+            this._router.navigate(['events']);
+        }
     };
     ProfileComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/user/profile.component.html'
+            templateUrl: 'app/user/profile.component.html',
+            styles: ["\n    em { float:right; color:#E05C65; padding-left: 10px;}\n    .error input { background-color: #E3C3C5; }    \n  "]
         }), 
         __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], ProfileComponent);
