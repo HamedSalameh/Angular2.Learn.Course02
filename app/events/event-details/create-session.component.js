@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var index_1 = require('../shared/index');
 var CreateSessionComponent = (function () {
     function CreateSessionComponent() {
     }
@@ -18,7 +19,7 @@ var CreateSessionComponent = (function () {
         this.presenter = new forms_1.FormControl('', forms_1.Validators.required);
         this.duration = new forms_1.FormControl('', forms_1.Validators.required);
         this.level = new forms_1.FormControl('', forms_1.Validators.required);
-        this.abstract = new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.maxLength(400)]);
+        this.abstract = new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.maxLength(400), index_1.restrictedWords(['foo', 'bar'])]);
         this.newSessionForm = new forms_1.FormGroup({
             name: this.name,
             presenter: this.presenter,
