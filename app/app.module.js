@@ -33,7 +33,8 @@ var AppModule = (function () {
                 navbar_component_1.NavBarComponent,
                 index_1.EventDetailsComponent,
                 index_1.CreateEventComponent,
-                _404_component_1.Error404Component],
+                _404_component_1.Error404Component,
+                index_1.CreateSessionComponent],
             providers: [
                 index_1.EventService,
                 toastr_service_1.ToastrService,
