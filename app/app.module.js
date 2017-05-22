@@ -34,7 +34,8 @@ var AppModule = (function () {
                 index_1.EventDetailsComponent,
                 index_1.CreateEventComponent,
                 _404_component_1.Error404Component,
-                index_1.CreateSessionComponent],
+                index_1.CreateSessionComponent,
+                index_1.SessionsListComponent],
             providers: [
                 index_1.EventService,
                 toastr_service_1.ToastrService,
