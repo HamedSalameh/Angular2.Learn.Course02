@@ -18,6 +18,7 @@ var events_app_component_1 = require('./events-app.component');
 var navbar_component_1 = require('./nav/navbar.component');
 var _404_component_1 = require('./errors/404.component');
 var toastr_service_1 = require('./common/toastr.service');
+var collapsible_well_component_1 = require('./common/collapsible-well.component');
 var routes_1 = require('./routes');
 var AppModule = (function () {
     function AppModule() {
@@ -35,7 +36,8 @@ var AppModule = (function () {
                 index_1.CreateEventComponent,
                 _404_component_1.Error404Component,
                 index_1.CreateSessionComponent,
-                index_1.SessionsListComponent],
+                index_1.SessionsListComponent,
+                collapsible_well_component_1.CollapsibleWellComponent],
             providers: [
                 index_1.EventService,
                 toastr_service_1.ToastrService,
