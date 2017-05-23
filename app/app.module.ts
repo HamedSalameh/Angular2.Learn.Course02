@@ -12,7 +12,8 @@ import {
     EventRouteActivator,
     EventListResolver,
     CreateSessionComponent,
-    SessionsListComponent
+    SessionsListComponent,
+    DurationPipe
 } from './events/index';
 
 import { AuthService} from './user/auth.service';
@@ -36,7 +37,8 @@ import { appRoutes } from './routes';
         Error404Component,
         CreateSessionComponent,
         SessionsListComponent,
-        CollapsibleWellComponent],
+        CollapsibleWellComponent,
+        DurationPipe],
     providers: [
         EventService,
         ToastrService,
