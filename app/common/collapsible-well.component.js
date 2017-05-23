@@ -16,14 +16,10 @@ var CollapsibleWellComponent = (function () {
     CollapsibleWellComponent.prototype.toggleContent = function () {
         this.visible = !this.visible;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], CollapsibleWellComponent.prototype, "title", void 0);
     CollapsibleWellComponent = __decorate([
         core_1.Component({
             selector: 'collapsible-well',
-            template: "\n    <div (click)=\"toggleContent()\" class=\"well pointable\">\n        <h4 class=\"well-title\">{{title}}</h4>\n        <ng-content *ngIf=\"visible\"></ng-content>\n    </div>\n    "
+            template: "\n    <div (click)=\"toggleContent()\" class=\"well pointable\">\n        <h4>\n            <ng-content select=\"[well-title]\"></ng-content>\n        </h4>\n        <ng-content select=\"[well-body]\" *ngIf=\"visible\"></ng-content>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], CollapsibleWellComponent);
