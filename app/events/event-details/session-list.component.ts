@@ -1,12 +1,31 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ISession} from '../shared/index'
 
 @Component({
     selector: 'session-list',
     templateUrl: 'app/events/event-details/session-list.component.html'
 })
-export class SessionsListComponent{
+export class SessionsListComponent implements OnChanges {
 
     @Input() sessions: ISession[]
+    @Input() filterBy: string;
+    visibleSessions: ISession[];
+
+    ngOnChanges() : void{
+        if(this.sessions){
+            this.filterSessions(this.filterBy);
+        }
+    }
+
+    filterSessions(filter){
+        if (filter === 'all'){
+            // .slice() - a nice was to duplacate an object array (creates a new one)
+            this.visibleSessions = this.sessions.slice(0);
+        } else {
+            this.visibleSessions = this.sessions.filter( session => {
+                return session.level.toLocaleLowerCase() === filter;
+            } )
+        }
+    }
 
 }

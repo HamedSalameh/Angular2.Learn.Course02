@@ -15,6 +15,7 @@ var EventDetailsComponent = (function () {
     function EventDetailsComponent(_eventService, _route) {
         this._eventService = _eventService;
         this._route = _route;
+        this.filterBy = 'all';
     }
     ;
     EventDetailsComponent.prototype.ngOnInit = function () {

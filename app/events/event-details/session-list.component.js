@@ -12,10 +12,30 @@ var core_1 = require('@angular/core');
 var SessionsListComponent = (function () {
     function SessionsListComponent() {
     }
+    SessionsListComponent.prototype.ngOnChanges = function () {
+        if (this.sessions) {
+            this.filterSessions(this.filterBy);
+        }
+    };
+    SessionsListComponent.prototype.filterSessions = function (filter) {
+        if (filter === 'all') {
+            // .slice() - a nice was to duplacate an object array (creates a new one)
+            this.visibleSessions = this.sessions.slice(0);
+        }
+        else {
+            this.visibleSessions = this.sessions.filter(function (session) {
+                return session.level.toLocaleLowerCase() === filter;
+            });
+        }
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
     ], SessionsListComponent.prototype, "sessions", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], SessionsListComponent.prototype, "filterBy", void 0);
     SessionsListComponent = __decorate([
         core_1.Component({
             selector: 'session-list',

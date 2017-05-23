@@ -15,6 +15,8 @@ import { SessionsListComponent } from './session-list.component'
 export class EventDetailsComponent implements OnInit {
     event: IEvent;
     addMode: boolean;
+    filterBy: string = 'all';
+    
     constructor(private _eventService: EventService, private _route:ActivatedRoute){};
 
     ngOnInit() {
