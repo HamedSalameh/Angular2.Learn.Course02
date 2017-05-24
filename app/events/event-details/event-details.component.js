@@ -16,6 +16,7 @@ var EventDetailsComponent = (function () {
         this._eventService = _eventService;
         this._route = _route;
         this.filterBy = 'all';
+        this.sortBy = 'votes';
     }
     ;
     EventDetailsComponent.prototype.ngOnInit = function () {

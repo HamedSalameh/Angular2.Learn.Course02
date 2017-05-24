@@ -15,6 +15,7 @@ var SessionsListComponent = (function () {
     SessionsListComponent.prototype.ngOnChanges = function () {
         if (this.sessions) {
             this.filterSessions(this.filterBy);
+            this.sortBy === 'name' ? this.visibleSessions.sort(sortByNameAsc) : this.visibleSessions.sort(sortByVotesDesc);
         }
     };
     SessionsListComponent.prototype.filterSessions = function (filter) {
@@ -36,6 +37,10 @@ var SessionsListComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], SessionsListComponent.prototype, "filterBy", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], SessionsListComponent.prototype, "sortBy", void 0);
     SessionsListComponent = __decorate([
         core_1.Component({
             selector: 'session-list',
@@ -46,4 +51,16 @@ var SessionsListComponent = (function () {
     return SessionsListComponent;
 }());
 exports.SessionsListComponent = SessionsListComponent;
+// These 2 methods will be used by JavaScript sory method to compare 2 items (predicates)
+function sortByNameAsc(s1, s2) {
+    if (s1.name > s2.name)
+        return 1;
+    else if (s1.name === s2.name)
+        return 0;
+    else
+        return -1;
+}
+function sortByVotesDesc(s1, s2) {
+    return s2.voters.length - s1.voters.length;
+}
 //# sourceMappingURL=session-list.component.js.map
