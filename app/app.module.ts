@@ -20,9 +20,11 @@ import { AuthService} from './user/auth.service';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { appRoutes } from './routes';
+
+declare let toastr: Toastr
 
 @NgModule({
     imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule],
@@ -41,7 +43,10 @@ import { appRoutes } from './routes';
         DurationPipe],
     providers: [
         EventService,
-        ToastrService,
+        { 
+            provide: TOASTR_TOKEN,
+            useValue: toastr
+        },
         EventRouteActivator,
         {
             provide: 'canDeactivateCreateEvent',
