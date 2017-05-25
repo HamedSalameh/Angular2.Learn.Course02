@@ -1,0 +1,1 @@
+{"version":3,"file":"simpleModal.component.js","sourceRoot":"","sources":["simpleModal.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAiC,eAAe,CAAC,CAAA;AA6BjD;IAAA;IAEA,CAAC;IADG;QAAC,YAAK,EAAE;;uDAAA;IA5BZ;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,cAAc;YACxB,QAAQ,EACR,smBAgBC;YACD,MAAM,EACN;gBACI,uEAEC;aACJ;SACJ,CAAC;;4BAAA;IAGF,2BAAC;AAAD,CAAC,AAFD,IAEC;AAFY,4BAAoB,uBAEhC,CAAA"}

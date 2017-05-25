@@ -37,12 +37,17 @@ var AppModule = (function () {
                 index_1.CreateSessionComponent,
                 index_1.SessionsListComponent,
                 index_2.CollapsibleWellComponent,
-                index_1.DurationPipe],
+                index_1.DurationPipe,
+                index_2.SimpleModalComponent],
             providers: [
                 index_1.EventService,
                 {
                     provide: index_2.TOASTR_TOKEN,
                     useValue: toastr
+                },
+                {
+                    provide: index_2.JQ_TOKEN,
+                    useValue: jQuery
                 },
                 index_1.EventRouteActivator,
                 {

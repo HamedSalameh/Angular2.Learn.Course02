@@ -16,15 +16,17 @@ import {
     DurationPipe
 } from './events/index';
 
-import { AuthService} from './user/auth.service';
+import { AuthService } from './user/auth.service';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
-import { 
-    TOASTR_TOKEN, 
-    Toastr, 
-    JQ_TOKEN, 
-    CollapsibleWellComponent } from './common/index';
+import {
+    TOASTR_TOKEN,
+    Toastr,
+    JQ_TOKEN,
+    CollapsibleWellComponent,
+    SimpleModalComponent
+} from './common/index';
 import { appRoutes } from './routes';
 
 declare let toastr: Toastr
@@ -44,12 +46,17 @@ declare let jQuery: Object
         CreateSessionComponent,
         SessionsListComponent,
         CollapsibleWellComponent,
-        DurationPipe],
+        DurationPipe,
+        SimpleModalComponent],
     providers: [
         EventService,
-        { 
+        {
             provide: TOASTR_TOKEN,
             useValue: toastr
+        },
+        {
+            provide: JQ_TOKEN,
+            useValue: jQuery
         },
         EventRouteActivator,
         {
