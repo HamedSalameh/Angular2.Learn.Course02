@@ -6,4 +6,5 @@ __export(require('./jQuery.service'));
 __export(require('./toastr.service'));
 __export(require('./collapsible-well.component'));
 __export(require('./simpleModal.component'));
+__export(require('./modalTrigger.directive'));
 //# sourceMappingURL=index.js.map
