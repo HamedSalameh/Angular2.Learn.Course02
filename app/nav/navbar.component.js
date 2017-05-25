@@ -18,10 +18,8 @@ var NavBarComponent = (function () {
     }
     NavBarComponent.prototype.searchSessions = function (searchTerm) {
         var _this = this;
-        alert(searchTerm);
         this._eventService.searchSessions(searchTerm).subscribe(function (sessions) {
             _this.foundSessions = sessions;
-            console.log(_this.foundSessions);
         });
     };
     NavBarComponent = __decorate([
