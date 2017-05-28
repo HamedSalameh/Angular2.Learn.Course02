@@ -18,7 +18,10 @@ var SimpleModalComponent = (function () {
         this.$ = $;
     }
     SimpleModalComponent.prototype.closeModal = function () {
-        this.$(this.containerElement.nativeElement).modal('hide');
+        if (this.closeOnBodyClick.toLocaleLowerCase() ===
+            'true') {
+            this.$(this.containerElement.nativeElement).modal('hide');
+        }
     };
     __decorate([
         core_1.Input(), 
@@ -32,6 +35,10 @@ var SimpleModalComponent = (function () {
         core_1.ViewChild('modalContainer'), 
         __metadata('design:type', core_1.ElementRef)
     ], SimpleModalComponent.prototype, "containerElement", void 0);
+    __decorate([
+        core_1.Input('closeOnBodyClick'), 
+        __metadata('design:type', String)
+    ], SimpleModalComponent.prototype, "closeOnBodyClick", void 0);
     SimpleModalComponent = __decorate([
         core_1.Component({
             selector: 'simple-modal',
