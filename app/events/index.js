@@ -9,4 +9,5 @@ __export(require('./events-list.component'));
 __export(require('./event-route-activator.component'));
 __export(require('./shared/index'));
 __export(require('./event-details/index'));
+__export(require('./locationValidator.directive'));
 //# sourceMappingURL=index.js.map

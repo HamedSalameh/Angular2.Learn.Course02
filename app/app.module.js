@@ -40,7 +40,8 @@ var AppModule = (function () {
                 index_1.DurationPipe,
                 index_2.SimpleModalComponent,
                 index_2.ModalTriggerDirective,
-                index_1.UpvoteComponent
+                index_1.UpvoteComponent,
+                index_1.LocationValidator
             ],
             providers: [
                 index_1.EventService,
