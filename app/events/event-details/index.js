@@ -5,4 +5,6 @@ function __export(m) {
 __export(require('./event-details.component'));
 __export(require('./create-session.component'));
 __export(require('./session-list.component'));
+__export(require('./upvote.component'));
+__export(require('./voter.service'));
 //# sourceMappingURL=index.js.map

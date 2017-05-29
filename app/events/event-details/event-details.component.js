@@ -42,7 +42,7 @@ var EventDetailsComponent = (function () {
     EventDetailsComponent = __decorate([
         core_1.Component({
             templateUrl: '/app/events/event-details/event-details.component.html',
-            styles: ["\n        .container { padding-left: 20px; padding-right: 20px; },\n        .event-image { height: 100px; }\n        a {cursor: pointer}\n        "]
+            styles: ["\n        .container { padding-left: 20px; padding-right: 20px; }\n        .event-image { height: 100px; }\n        a {cursor: pointer}\n        "]
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService, router_1.ActivatedRoute])
     ], EventDetailsComponent);
