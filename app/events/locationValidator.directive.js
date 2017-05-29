@@ -28,7 +28,7 @@ var LocationValidator = (function () {
     ;
     LocationValidator = __decorate([
         core_1.Directive({
-            selector: 'locationValidator',
+            selector: '[validateLocation]',
             providers: [
                 { provide: forms_1.NG_VALIDATORS, useExisting: LocationValidator, multi: true }
             ]
