@@ -10,16 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var RX_1 = require('rxjs/RX');
+var http_1 = require('@angular/http');
 var EventService = (function () {
-    function EventService() {
+    function EventService(_http) {
+        this._http = _http;
     }
     EventService.prototype.getEvents = function () {
-        var subject = new RX_1.Subject();
-        setTimeout(function () {
-            subject.next(EVENTS);
-            subject.complete();
-        }, 100);
-        return subject;
+        return this._http.get("/api/events")
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    EventService.prototype.handleError = function (error) {
+        return RX_1.Observable.throw(error.statusText);
     };
     EventService.prototype.getEvent = function (id) {
         return EVENTS.find(function (event) { return event.id === id; });
@@ -52,7 +54,7 @@ var EventService = (function () {
     };
     EventService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], EventService);
     return EventService;
 }());

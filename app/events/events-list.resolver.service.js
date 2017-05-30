@@ -15,7 +15,7 @@ var EventListResolver = (function () {
         this._eventService = _eventService;
     }
     EventListResolver.prototype.resolve = function () {
-        return this._eventService.getEvents().map(function (events) { return events; });
+        return this._eventService.getEvents();
     };
     EventListResolver = __decorate([
         core_1.Injectable(), 
