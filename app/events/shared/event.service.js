@@ -36,21 +36,9 @@ var EventService = (function () {
             .catch(this.handleError);
     };
     EventService.prototype.searchSessions = function (searchTerm) {
-        var term = searchTerm.toLocaleLowerCase();
-        var results = [];
-        EVENTS.forEach(function (event) {
-            var matchingSessions = event.sessions.filter(function (session) {
-                return session.name.toLocaleLowerCase().indexOf(term) > -1;
-            });
-            matchingSessions = matchingSessions.map(function (session) {
-                session.eventId = event.id;
-                return session;
-            });
-            results = results.concat(matchingSessions);
-        });
-        var eventEmitter = new core_1.EventEmitter(true);
-        setTimeout(function () { return eventEmitter.emit(results); }, 100);
-        return eventEmitter;
+        return this._http.get("/api/sessions/search?search=" + searchTerm)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
     };
     EventService = __decorate([
         core_1.Injectable(), 
