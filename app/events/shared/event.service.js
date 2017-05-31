@@ -29,13 +29,11 @@ var EventService = (function () {
             .catch(this.handleError);
     };
     EventService.prototype.saveEvent = function (event) {
-        event.id = 999;
-        event.session = [];
-        EVENTS.push(event);
-    };
-    EventService.prototype.updateEvent = function (event) {
-        var index = EVENTS.findIndex(function (x) { return x.id = event.id; });
-        EVENTS[index] = event;
+        var _headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var _requestOptions = new http_1.RequestOptions({ headers: _headers });
+        return this._http.post('/api/events', JSON.stringify(event), _requestOptions)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
     };
     EventService.prototype.searchSessions = function (searchTerm) {
         var term = searchTerm.toLocaleLowerCase();

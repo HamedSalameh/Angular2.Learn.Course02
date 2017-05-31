@@ -33,7 +33,7 @@ var EventDetailsComponent = (function () {
         var nextId = Math.max.apply(null, this.event.sessions.map(function (s) { return s.id; }));
         session.id = nextId + 1;
         this.event.sessions.push(session);
-        this._eventService.updateEvent(this.event);
+        this._eventService.saveEvent(this.event).subscribe();
         this.addMode = false;
     };
     EventDetailsComponent.prototype.cancelAddSession = function () {

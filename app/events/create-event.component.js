@@ -21,9 +21,11 @@ var CreateEventComponent = (function () {
         this._router.navigate(['/events']);
     };
     CreateEventComponent.prototype.saveEvent = function (formValues) {
-        this._eventService.saveEvent(formValues);
-        this.isDirty = false;
-        this._router.navigate(['/events']);
+        var _this = this;
+        this._eventService.saveEvent(formValues).subscribe(function (res) {
+            _this.isDirty = false;
+            _this._router.navigate(['/events']);
+        });
     };
     CreateEventComponent = __decorate([
         core_1.Component({
