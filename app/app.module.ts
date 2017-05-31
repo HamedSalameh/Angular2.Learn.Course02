@@ -10,14 +10,14 @@ import {
     EventService,
     EventDetailsComponent,
     CreateEventComponent,
-    EventRouteActivator,
     EventListResolver,
     CreateSessionComponent,
     SessionsListComponent,
     DurationPipe,
     UpvoteComponent,
     VoterService,
-    LocationValidator
+    LocationValidator,
+    EventResolver
 } from './events/index';
 
 import { AuthService } from './user/auth.service';
@@ -67,7 +67,7 @@ declare let jQuery: Object
             provide: JQ_TOKEN,
             useValue: jQuery
         },
-        EventRouteActivator,
+        EventResolver,
         {
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyStart

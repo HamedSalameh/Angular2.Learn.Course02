@@ -18,8 +18,10 @@ export class EventService {
         return Observable.throw(error.statusText);
     }
 
-    getEvent(id: number): IEvent {
-        return EVENTS.find(event => event.id === id);
+    getEvent(id: number): Observable<IEvent> {
+        return this._http.get("/api/events/" + id)
+        .map( (res: Response) => { return <IEvent>res.json(); })
+        .catch(this.handleError);
     }
 
     saveEvent(event) {

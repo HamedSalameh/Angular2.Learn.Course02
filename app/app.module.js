@@ -54,7 +54,7 @@ var AppModule = (function () {
                     provide: index_2.JQ_TOKEN,
                     useValue: jQuery
                 },
-                index_1.EventRouteActivator,
+                index_1.EventResolver,
                 {
                     provide: 'canDeactivateCreateEvent',
                     useValue: checkDirtyStart

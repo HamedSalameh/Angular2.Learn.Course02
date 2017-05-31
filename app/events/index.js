@@ -5,8 +5,8 @@ function __export(m) {
 __export(require('./create-event.component'));
 __export(require('./event-thunmbnail.component'));
 __export(require('./events-list.resolver.service'));
+__export(require('./event-resolver.service'));
 __export(require('./events-list.component'));
-__export(require('./event-route-activator.component'));
 __export(require('./shared/index'));
 __export(require('./event-details/index'));
 __export(require('./locationValidator.directive'));

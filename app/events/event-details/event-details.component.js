@@ -21,10 +21,10 @@ var EventDetailsComponent = (function () {
     ;
     EventDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._route.params.forEach((function (params) {
-            _this.event = _this._eventService.getEvent(+params['id']);
+        this._route.data.forEach(function (data) {
+            _this.event = data['event'];
             _this.addMode = false;
-        }));
+        });
     };
     EventDetailsComponent.prototype.addSession = function () {
         this.addMode = true;

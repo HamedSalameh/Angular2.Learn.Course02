@@ -24,7 +24,9 @@ var EventService = (function () {
         return RX_1.Observable.throw(error.statusText);
     };
     EventService.prototype.getEvent = function (id) {
-        return EVENTS.find(function (event) { return event.id === id; });
+        return this._http.get("/api/events/" + id)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
     };
     EventService.prototype.saveEvent = function (event) {
         event.id = 999;
