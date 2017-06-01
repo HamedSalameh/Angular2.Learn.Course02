@@ -9,15 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var auth_service_1 = require('./user/auth.service');
 var EventsAppComponent = (function () {
-    function EventsAppComponent() {
+    function EventsAppComponent(_auth) {
+        this._auth = _auth;
     }
+    EventsAppComponent.prototype.ngOnInit = function () {
+        this._auth.checkAuthenticationStatus();
+    };
     EventsAppComponent = __decorate([
         core_1.Component({
             selector: 'events-app',
             template: "\n        <nav-bar></nav-bar>\n        <router-outlet></router-outlet>\n    "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService])
     ], EventsAppComponent);
     return EventsAppComponent;
 }());

@@ -34,6 +34,21 @@ var AuthService = (function () {
     AuthService.prototype.isAuthenticated = function () {
         return !!this.currentUser;
     };
+    AuthService.prototype.checkAuthenticationStatus = function () {
+        var _this = this;
+        return this._http.get('/api/currentIdentity').map(function (res) {
+            if (res._body) {
+                return res.json();
+            }
+            else {
+                return {};
+            }
+        }).do(function (currentUser) {
+            if (!!currentUser.userName) {
+                _this.currentUser = currentUser;
+            }
+        }).subscribe();
+    };
     AuthService.prototype.updateCurrentUser = function (firstName, lastName) {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
