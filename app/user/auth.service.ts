@@ -1,24 +1,39 @@
 import { Injectable } from '@angular/core';
-import { IUser} from './user.model';
+import { IUser } from './user.model';
+import { Subject, Observable } from 'rxjs/RX';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class AuthService {
     currentUser: IUser;
 
-    loginUser(userName: string, password: string){
-        this.currentUser = {
-            id: 1,
-            firstName: 'Hamed',
-            lastName: 'Salameh',
-            userName: 'hamedsal'
-        }
+    constructor(private _http: Http) { }
+
+    loginUser(userName: string, password: string) {
+        let _header = new Headers({ 'Content-type': 'application/json' });
+        let _requestOptions = new RequestOptions({ headers: _header });
+
+        let loginInfo = { username: userName, password: password };
+
+        // do: the same as forFech & map, but it means we will not change the data
+        return this._http.post('/api/login', JSON.stringify(loginInfo), _requestOptions)
+            .do(res => {
+                if (res) {
+                    this.currentUser = <IUser>res.json();
+                }
+            })
+            .catch(err => {
+                return Observable.of(false);
+            }
+
+            )
     }
 
     isAuthenticated() {
         return !!this.currentUser;
     }
 
-    updateCurrentUser(firstName: string, lastName: string){
+    updateCurrentUser(firstName: string, lastName: string) {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
 

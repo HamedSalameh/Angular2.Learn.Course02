@@ -9,16 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var RX_1 = require('rxjs/RX');
+var http_1 = require('@angular/http');
 var AuthService = (function () {
-    function AuthService() {
+    function AuthService(_http) {
+        this._http = _http;
     }
     AuthService.prototype.loginUser = function (userName, password) {
-        this.currentUser = {
-            id: 1,
-            firstName: 'Hamed',
-            lastName: 'Salameh',
-            userName: 'hamedsal'
-        };
+        var _this = this;
+        var _header = new http_1.Headers({ 'Content-type': 'application/json' });
+        var _requestOptions = new http_1.RequestOptions({ headers: _header });
+        var loginInfo = { username: userName, password: password };
+        // do: the same as forFech & map, but it means we will not change the data
+        return this._http.post('/api/login', JSON.stringify(loginInfo), _requestOptions)
+            .do(function (res) {
+            if (res) {
+                _this.currentUser = res.json();
+            }
+        })
+            .catch(function (err) {
+            return RX_1.Observable.of(false);
+        });
     };
     AuthService.prototype.isAuthenticated = function () {
         return !!this.currentUser;
@@ -29,7 +40,7 @@ var AuthService = (function () {
     };
     AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], AuthService);
     return AuthService;
 }());
