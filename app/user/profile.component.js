@@ -40,9 +40,11 @@ var ProfileComponent = (function () {
         return this.firstName.valid || this.firstName.untouched;
     };
     ProfileComponent.prototype.saveProfile = function (formValue) {
+        var _this = this;
         if (this.profileForm.valid) {
-            this._auth.updateCurrentUser(formValue.firstName, formValue.lastName);
-            this.toastr.success("profile saved");
+            this._auth.updateCurrentUser(formValue.firstName, formValue.lastName).subscribe(function () {
+                _this.toastr.success("profile saved");
+            });
         }
     };
     ProfileComponent = __decorate([

@@ -52,6 +52,9 @@ var AuthService = (function () {
     AuthService.prototype.updateCurrentUser = function (firstName, lastName) {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
+        var _header = new http_1.Headers({ 'Content-type': 'application/json' });
+        var _requestOptions = new http_1.RequestOptions({ headers: _header });
+        return this._http.put("/api/users/" + this.currentUser.id, JSON.stringify(this.currentUser), _requestOptions);
     };
     AuthService = __decorate([
         core_1.Injectable(), 

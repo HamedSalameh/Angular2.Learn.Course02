@@ -51,5 +51,10 @@ export class AuthService {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
 
+        let _header = new Headers({ 'Content-type': 'application/json' });
+        let _requestOptions = new RequestOptions({ headers: _header });
+
+        return this._http.put(`/api/users/${this.currentUser.id}`, JSON.stringify(this.currentUser), _requestOptions);
+
     }
 }
